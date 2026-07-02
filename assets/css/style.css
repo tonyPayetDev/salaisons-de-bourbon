@@ -657,21 +657,6 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
 /* =====================================================
    SECTION PRODUITS (Galerie)
    ===================================================== */
-.produits {
-  background: var(--white);
-}
-
-.produits__intro {
-  max-width: 600px;
-  margin: 0 auto 3rem;
-}
-
-.produits__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-}
-
 .produit-card {
   border-radius: var(--radius);
   overflow: hidden;
@@ -724,6 +709,79 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-top: 0.2rem;
+}
+
+/* =====================================================
+   SLIDER PRODUITS (dans section Nos Marques)
+   ===================================================== */
+.produits__slider-intro {
+  margin: 4rem auto 2rem;
+  text-align: center;
+}
+
+.produits__slider-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--text-dark);
+}
+
+.produits__slider {
+  position: relative;
+  padding: 0 2.5rem;
+}
+
+.produits__track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0.5rem 0 1rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.produits__track::-webkit-scrollbar {
+  display: none;
+}
+
+.produits__track .produit-card {
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+}
+
+.produits__slider-btn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all var(--transition);
+}
+
+.produits__slider-btn:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.produits__slider-btn--prev { left: 0; }
+.produits__slider-btn--next { right: 0; }
+
+@media (max-width: 640px) {
+  .produits__slider { padding: 0 1rem; }
+  .produits__slider-btn { display: none; }
+  .produits__track .produit-card { flex-basis: 65vw; }
 }
 
 /* =====================================================
@@ -1085,10 +1143,6 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
     gap: 3rem;
   }
 
-  .produits__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .contact__inner {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -1137,10 +1191,6 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
     margin-right: auto;
   }
 
-  .produits__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .social__preview {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1169,11 +1219,6 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
 @media (max-width: 480px) {
   .hero__stats {
     flex-direction: column;
-    gap: 1rem;
-  }
-
-  .produits__grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 

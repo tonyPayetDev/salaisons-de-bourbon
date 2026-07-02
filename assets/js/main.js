@@ -99,4 +99,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sections.forEach(s => sectionObserver.observe(s));
 
+  // ── Produits slider (nav buttons) ─────────────────
+  document.querySelectorAll('.produits__slider').forEach(slider => {
+    const track = slider.querySelector('.produits__track');
+    const prevBtn = slider.querySelector('.produits__slider-btn--prev');
+    const nextBtn = slider.querySelector('.produits__slider-btn--next');
+    if (!track) return;
+
+    const scrollByCard = (direction) => {
+      const card = track.querySelector('.produit-card');
+      const step = card ? card.getBoundingClientRect().width + 24 : 240;
+      track.scrollBy({ left: step * direction, behavior: 'smooth' });
+    };
+
+    prevBtn?.addEventListener('click', () => scrollByCard(-1));
+    nextBtn?.addEventListener('click', () => scrollByCard(1));
+  });
+
 });
